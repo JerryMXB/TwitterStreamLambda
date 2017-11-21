@@ -12,11 +12,13 @@ public class Tweet {
     private final String username;
     private final String date;
     private final double[] location;
-    public Tweet(long id, String username, String text, String date, GeoLocation location) {
+    private final double sentimentScore;
+    public Tweet(long id, String username, String text, String date, double sentimentScore, GeoLocation location) {
         this.id = id;
         this.username = username;
         this.text = text;
         this.date = date;
+        this.sentimentScore = sentimentScore;
         this.location = new double[] {location.getLatitude(), location.getLongitude()};
     }
 }

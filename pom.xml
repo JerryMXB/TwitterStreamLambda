@@ -49,6 +49,12 @@
             <version>1.1.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.ibm.watson.developer_cloud</groupId>
+            <artifactId>java-sdk</artifactId>
+            <version>3.7.2</version>
+        </dependency>
+
 
     </dependencies>
 

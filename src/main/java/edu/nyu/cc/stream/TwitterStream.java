@@ -1,6 +1,7 @@
 package edu.nyu.cc.stream;
 
 import com.google.gson.Gson;
+import edu.nyu.cc.IBM.IBMNPL;
 import edu.nyu.cc.SQS.TwitterSQS;
 import edu.nyu.cc.bean.Tweet;
 import edu.nyu.cc.util.DateConvetor;
@@ -21,9 +22,9 @@ public class TwitterStream implements Runnable{
             public void onStatus(Status status) {
                 if (status.getGeoLocation() != null) {
                     String date = DateConvetor.convert(status.getCreatedAt());
-                    Tweet tweet = new Tweet(status.getId(), status.getUser().getScreenName(),
-                            status.getText(), date, status.getGeoLocation());
 
+                    Tweet tweet = new Tweet(status.getId(), status.getUser().getScreenName(),
+                            status.getText(), date, IBMNPL.analysis(status.getText()), status.getGeoLocation());
                     System.out.println(tweet.toString());
                     TwitterSQS.sendToSQS(new Gson().toJson(tweet));
                 }
